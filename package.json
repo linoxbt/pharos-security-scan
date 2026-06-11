@@ -4,6 +4,32 @@
   "description": "Reusable Pharos Skill for multi-layer EVM address security scanning using GoPlus Security APIs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "bin": {
+    "pharos-security-scan": "dist/index.js",
+    "pharos-onchain-memo": "dist/memo.js"
+  },
+  "files": [
+    "dist",
+    "SKILL.md",
+    "skills",
+    "assets",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linoxbt/pharos-security-scan.git"
+  },
+  "homepage": "https://github.com/linoxbt/pharos-security-scan#readme",
+  "bugs": {
+    "url": "https://github.com/linoxbt/pharos-security-scan/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
@@ -12,7 +38,8 @@
     "scan": "ts-node src/index.ts",
     "memo": "ts-node src/memo.ts",
     "demo": "bash examples/demo.sh",
-    "demo:cast": "python3 examples/gen-cast.py > examples/demo.cast"
+    "demo:cast": "python3 examples/gen-cast.py > examples/demo.cast",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "pharos",

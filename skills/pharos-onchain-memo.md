@@ -130,8 +130,10 @@ PHAROS_PRIVATE_KEY=0x...   # required only to broadcast (else dry run)
 ## CLI
 
 ```bash
-# Dry run (no key) — prints the calldata an Agent would broadcast
-npx ts-node src/memo.ts '{"address":"0x098B716B8Aaf21512996dC57EB0615e2383E2f96","verdict":"CRITICAL","risk_score":100,"network":"atlantic-testnet"}'
+# Published: npx fetches and runs it (dry run — prints the calldata, no key needed)
+npx pharos-onchain-memo '{"address":"0x098B716B8Aaf21512996dC57EB0615e2383E2f96","verdict":"CRITICAL","risk_score":100,"network":"atlantic-testnet"}'
+
+# From a clone: npx ts-node src/memo.ts '<json>'
 ```
 
 ## Example Output (dry run)

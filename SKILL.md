@@ -45,12 +45,20 @@ Security data is provided by **GoPlus Security**, which supports **Pharos Mainne
 
 ## Usage
 
-```bash
-# Library
-node -e "require('./dist').pharosSecurityScan({address:'0x...',chain_id:'1672',scan_type:'auto'}).then(r=>console.log(r.data.verdict))"
+The Agent runs the CLI and reads the JSON result. Once published to npm, no clone
+is needed — `npx` fetches and runs it:
 
-# CLI (TypeScript, no build needed)
-npx ts-node src/index.ts '{"address":"0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48","chain_id":"1","scan_type":"token"}'
+```bash
+# Scan (auto-detects token vs wallet)
+npx pharos-security-scan '{"address":"0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48","chain_id":"1672","scan_type":"auto"}'
+
+# Write the verdict on-chain (dry run unless PHAROS_PRIVATE_KEY is set)
+npx pharos-onchain-memo '{"address":"0x...","verdict":"CRITICAL","risk_score":100,"network":"mainnet"}'
+```
+
+```bash
+# From a clone (no npm needed): npx ts-node src/index.ts '<json>'
+# As a library: const { pharosSecurityScan } = require('pharos-security-scan')
 ```
 
 The Agent branches on `result.data.verdict`:
