@@ -83,10 +83,10 @@ switch (result.data.verdict) {
 
 ## Composition
 
-Combine with [`pharos-onchain-memo`](skills/pharos-onchain-memo.md) to write the
-verdict to Pharos before acting — a provable audit trail of every Agent decision.
+Combine with the `pharos-onchain-memo` skill to write the verdict to Pharos
+before acting — a provable audit trail of every Agent decision.
 
-See `skills/pharos-security-scan.md` for the full input/output schema, scan
+See `REFERENCE.md` (in this skill folder) for the full input/output schema, scan
 coverage, and example outputs.
 
 ## Network Configuration

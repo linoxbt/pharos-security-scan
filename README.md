@@ -56,10 +56,11 @@ The UI is a local/demo convenience and is **not** part of the published npm pack
 npx skills add https://github.com/linoxbt/pharos-security-scan
 ```
 
-This installs the skill to `~/.agents/skills/pharos-security-scan` for every agent
-you select (Claude Code, Codex, Cursor, Cline, Gemini CLI, and more). You can also
-manually place `skills/pharos-security-scan.md` (and `skills/pharos-onchain-memo.md`)
-under your agent's skills directory (e.g. `~/.claude/skills/`).
+This installs **both** skills — `pharos-security-scan` and `pharos-onchain-memo` —
+to `~/.agents/skills/` for every agent you select (Claude Code, Codex, Cursor,
+Cline, Gemini CLI, and more). You can also manually copy either skill folder
+(`skills/pharos-security-scan/` or `skills/pharos-onchain-memo/`) into your agent's
+skills directory (e.g. `~/.claude/skills/`).
 
 ### As a library / to run the CLI and demo
 
