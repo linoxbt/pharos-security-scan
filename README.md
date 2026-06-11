@@ -82,9 +82,11 @@ npm run build        # optional: emit dist/
 npm run demo          # live 4-scene walkthrough: SAFE → CRITICAL → on Pharos → on-chain memo
 ```
 
-Record it with Loom / OBS / QuickTime for a submission video. A pre-recorded
+**▶ Watch the terminal demo: https://asciinema.org/a/U5qSnQpSxpUNNUCi**
+
+Record it yourself with Loom / OBS / QuickTime for a submission video. A pre-recorded
 terminal session is also committed at [`examples/demo.cast`](examples/demo.cast)
-(asciinema v2). To play or share it, install asciinema first:
+(asciinema v2). To play or re-upload it, install asciinema first:
 
 ```bash
 sudo apt install asciinema            # or: snap install asciinema
