@@ -1,0 +1,38 @@
+{
+  "name": "pharos-security-scan",
+  "version": "1.0.0",
+  "description": "Reusable Pharos Skill for multi-layer EVM address security scanning using GoPlus Security APIs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "test": "jest",
+    "scan": "ts-node src/index.ts"
+  },
+  "keywords": [
+    "pharos",
+    "skill",
+    "security",
+    "goplus",
+    "web3",
+    "agent",
+    "defi",
+    "blockchain"
+  ],
+  "author": "linoxbt",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.3.0",
+    "jest": "^29.0.0",
+    "@types/jest": "^29.0.0",
+    "ts-jest": "^29.0.0"
+  }
+}
