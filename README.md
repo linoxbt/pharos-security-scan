@@ -32,35 +32,53 @@ the scanner works on Pharos addresses, not just Ethereum/BSC.
 
 ## Installation
 
-```bash
-# npm
-npm install pharos-security-scan
+### As a Skill (recommended) — works today
 
-# Pharos Skill registry
+```bash
 npx skills add https://github.com/linoxbt/pharos-security-scan
 ```
 
-To use as a Claude Code Skill, place `skills/pharos-security-scan.md` under your
-Claude Code skills directory (e.g. `~/.claude/skills/` or a project's `.claude/skills/`).
+This installs the skill to `~/.agents/skills/pharos-security-scan` for every agent
+you select (Claude Code, Codex, Cursor, Cline, Gemini CLI, and more). You can also
+manually place `skills/pharos-security-scan.md` (and `skills/pharos-onchain-memo.md`)
+under your agent's skills directory (e.g. `~/.claude/skills/`).
+
+### As a library / to run the CLI and demo
+
+The package is not published to npm yet — clone and install from source:
+
+```bash
+git clone https://github.com/linoxbt/pharos-security-scan.git
+cd pharos-security-scan
+npm install          # installs deps incl. ts-node used by the CLI/demo
+npm run build        # optional: emit dist/
+```
+
+> Note: `npm install pharos-security-scan` will 404 until it's published to npm.
 
 ## Demo
 
-Run the live 4-scene walkthrough (SAFE → CRITICAL → on Pharos → on-chain memo):
+> Run these **from inside the cloned repo** (`cd pharos-security-scan`), after `npm install`.
 
 ```bash
-npm run demo          # human-runnable; record with Loom / OBS / QuickTime
+npm run demo          # live 4-scene walkthrough: SAFE → CRITICAL → on Pharos → on-chain memo
 ```
 
-A pre-recorded terminal session is committed at [`examples/demo.cast`](examples/demo.cast)
-(asciinema v2). Play or share it:
+Record it with Loom / OBS / QuickTime for a submission video. A pre-recorded
+terminal session is also committed at [`examples/demo.cast`](examples/demo.cast)
+(asciinema v2). To play or share it, install asciinema first:
 
 ```bash
-asciinema play examples/demo.cast          # local playback
-asciinema upload examples/demo.cast        # get a shareable asciinema.org link for submission
+sudo apt install asciinema            # or: snap install asciinema
+asciinema play  examples/demo.cast    # local playback
+asciinema upload examples/demo.cast   # -> shareable asciinema.org link for the submission
 # regenerate from live output: npm run demo:cast
 ```
 
 ## Quick Start
+
+> Installed from npm (once published) or via `npm link`, import by package name as
+> below. Running from a clone, import the source instead: `from './src'`.
 
 ```ts
 import { pharosSecurityScan } from 'pharos-security-scan';
