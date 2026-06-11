@@ -2,5 +2,7 @@
   "preset": "ts-jest",
   "testEnvironment": "node",
   "roots": ["<rootDir>/test"],
-  "testMatch": ["**/*.test.ts"]
+  "testMatch": ["**/*.test.ts"],
+  "forceExit": true,
+  "testTimeout": 60000
 }

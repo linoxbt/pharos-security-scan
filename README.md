@@ -19,6 +19,17 @@ score, and returns a machine-readable verdict — `SAFE`, `CAUTION`, `DANGER`, o
 `CRITICAL` — alongside a plain-English summary and a concrete `action_recommendation`.
 Any Pharos Agent can call it as a guard before touching user funds.
 
+## This repo ships two composable Pharos Skills
+
+| Skill | What it does |
+|-------|--------------|
+| **pharos-security-scan** | Read-only risk scan of any EVM address → `SAFE`/`CAUTION`/`DANGER`/`CRITICAL` verdict |
+| **pharos-onchain-memo** | Writes a verdict/decision to Pharos as a tamper-evident on-chain audit record |
+
+Both follow the **Pharos Skill Engine** format (`SKILL.md` frontmatter + `assets/networks.json`),
+and GoPlus supports **Pharos Mainnet (`1672`)** and **Pharos Testnet (`688688`)** natively — so
+the scanner works on Pharos addresses, not just Ethereum/BSC.
+
 ## Installation
 
 ```bash
@@ -31,6 +42,23 @@ npx skills add https://github.com/linoxbt/pharos-security-scan
 
 To use as a Claude Code Skill, place `skills/pharos-security-scan.md` under your
 Claude Code skills directory (e.g. `~/.claude/skills/` or a project's `.claude/skills/`).
+
+## Demo
+
+Run the live 4-scene walkthrough (SAFE → CRITICAL → on Pharos → on-chain memo):
+
+```bash
+npm run demo          # human-runnable; record with Loom / OBS / QuickTime
+```
+
+A pre-recorded terminal session is committed at [`examples/demo.cast`](examples/demo.cast)
+(asciinema v2). Play or share it:
+
+```bash
+asciinema play examples/demo.cast          # local playback
+asciinema upload examples/demo.cast        # get a shareable asciinema.org link for submission
+# regenerate from live output: npm run demo:cast
+```
 
 ## Quick Start
 
@@ -184,9 +212,10 @@ GoPlus is an official sponsor of the Pharos Skill-to-Agent Dual Cascade Hackatho
 ## Roadmap
 
 - **v1.1**
-  - Pharos-native chain indexing (`688688`) for first-class Pharos token coverage
+  - ✅ On-chain audit trail via the `pharos-onchain-memo` skill (shipped in v1.0)
   - [CertiK](https://www.certik.com/) Skynet integration as a second risk source (also a hackathon sponsor)
   - Real-time streaming alerts for monitored addresses
+  - A deployed Pharos memo-registry contract (indexed, queryable verdict history)
 
 ## License
 

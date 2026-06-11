@@ -1,0 +1,26 @@
+{
+  "networks": [
+    {
+      "name": "atlantic-testnet",
+      "rpcUrl": "https://atlantic.dplabs-internal.com",
+      "chainId": 688689,
+      "explorerUrl": "https://atlantic.pharosscan.xyz/",
+      "explorerApiUrl": "https://api.socialscan.io/pharos-atlantic-testnet",
+      "nativeToken": "PHRS",
+      "goplusChainId": "688688",
+      "goplusSupported": true
+    },
+    {
+      "name": "mainnet",
+      "rpcUrl": "https://rpc.pharos.xyz",
+      "chainId": 1672,
+      "explorerUrl": "https://www.pharosscan.xyz/",
+      "explorerApiUrl": "https://api.socialscan.io/pharos-mainnet",
+      "nativeToken": "PROS",
+      "goplusChainId": "1672",
+      "goplusSupported": true
+    }
+  ],
+  "defaultNetwork": "atlantic-testnet",
+  "_note": "Mirrors the Pharos Skill Engine assets/networks.json. goplusChainId is the chain id to pass to pharos-security-scan / GoPlus. GoPlus lists '688688 Pharos Testnet' and '1672 Pharos Mainnet'; the Engine's current atlantic testnet chainId is 688689."
+}

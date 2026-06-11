@@ -95,8 +95,21 @@ if (result.data.verdict === 'CRITICAL' || result.data.verdict === 'DANGER') {
 
 ### Step 3 — Log
 
-Combine with `pharos-onchain-memo` Skill to write the scan verdict on-chain as
-an audit trail before any significant transaction.
+Combine with the [`pharos-onchain-memo`](./pharos-onchain-memo.md) Skill to write
+the scan verdict on-chain as an audit trail before any significant transaction:
+
+```ts
+import { pharosSecurityScan, pharosOnchainMemo } from 'pharos-security-scan';
+
+const scan = await pharosSecurityScan({ address, chain_id: '1672', scan_type: 'auto' });
+await pharosOnchainMemo({
+  address,
+  verdict: scan.data!.verdict,
+  risk_score: scan.data!.risk_score.total,
+  summary: scan.data!.summary,
+  network: 'mainnet',
+});
+```
 
 ## Verdict Definitions
 
@@ -181,6 +194,19 @@ This Skill is designed to be called by:
 - **RWA Yield Scout Agent** — to verify vault contracts before rebalancing
 - **PROS Paymaster Agent** — to validate destination contracts before gasless relay
 - Any agent interacting with user funds on Pharos
+
+## Pharos Support
+
+GoPlus Security supports Pharos natively, so this Skill works on Pharos addresses
+directly:
+
+| Network          | chain_id to pass | GoPlus listing      |
+|------------------|------------------|---------------------|
+| Pharos Mainnet   | `1672`           | "1672 Pharos Mainnet" |
+| Pharos Testnet   | `688688`         | "688688 Pharos Testnet" |
+
+(The Pharos Skill Engine's current atlantic-testnet uses chainId `688689` for
+`cast`/`forge` RPC calls; GoPlus security data is indexed under `688688`.)
 
 ## Data Source
 

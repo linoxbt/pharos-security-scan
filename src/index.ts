@@ -492,6 +492,8 @@ export async function pharosSecurityScan(input: ScanInput): Promise<ScanResult> 
 
 export default pharosSecurityScan;
 export * from './types';
+export { pharosOnchainMemo, PHAROS_NETWORKS } from './memo';
+export type { MemoInput, MemoResult, MemoData, PharosNetworkName } from './memo';
 
 // ---------------------------------------------------------------------------
 // CLI entry: `ts-node src/index.ts '{"address":"0x...","chain_id":"1","scan_type":"token"}'`
