@@ -39,6 +39,7 @@
     "memo": "ts-node src/memo.ts",
     "demo": "bash examples/demo.sh",
     "demo:cast": "python3 examples/gen-cast.py > examples/demo.cast",
+    "ui": "TS_NODE_TRANSPILE_ONLY=1 ts-node server/server.ts",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
@@ -59,6 +60,8 @@
     "ethers": "^6.16.0"
   },
   "devDependencies": {
+    "@types/express": "^4.17.25",
+    "express": "^4.22.2",
     "@types/jest": "^29.0.0",
     "@types/node": "^20.0.0",
     "jest": "^29.0.0",

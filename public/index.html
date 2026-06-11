@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pharos Security Scan — Agent Safety Layer</title>
+  <meta name="description" content="Multi-layer EVM address security scanning for Pharos Agents. SAFE / CAUTION / DANGER / CRITICAL verdicts powered by GoPlus Security." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+</head>
+<body>
+  <div class="bg-mesh" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          <path d="m9 12 2 2 4-4"></path>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">Pharos Security Scan</span>
+        <span class="brand-sub">Agent safety layer · powered by GoPlus</span>
+      </div>
+    </div>
+    <nav class="top-links">
+      <a class="chip-link" href="https://www.npmjs.com/package/pharos-security-scan" target="_blank" rel="noopener">
+        <span class="dot dot-npm"></span> npm
+      </a>
+      <a class="chip-link" href="https://github.com/linoxbt/pharos-security-scan" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.7c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"></path></svg>
+        GitHub
+      </a>
+      <span class="chip-link static"><span class="dot dot-live"></span> Pharos 1672 / 688688</span>
+    </nav>
+  </header>
+
+  <main class="stage">
+    <section class="hero">
+      <h1>Is this address <span class="grad">safe to touch?</span></h1>
+      <p class="lede">Before a Pharos Agent sends funds, swaps, or approves an unknown
+        contract, it asks one question. Get a machine-readable verdict in seconds.</p>
+    </section>
+
+    <div class="console">
+      <!-- ─── Input card ─── -->
+      <div class="card input-card">
+        <div class="card-head">
+          <span class="card-eyebrow">Scan console</span>
+          <h2>Run a security scan</h2>
+        </div>
+
+        <label class="field">
+          <span class="field-label">Address</span>
+          <div class="addr-wrap">
+            <input id="address" type="text" spellcheck="false" autocomplete="off"
+              placeholder="0x… wallet, token, or contract address"
+              value="0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48" />
+            <button id="paste" class="ghost-btn" title="Paste from clipboard">paste</button>
+          </div>
+        </label>
+
+        <div class="field-row">
+          <label class="field">
+            <span class="field-label">Network</span>
+            <div class="select-wrap">
+              <select id="chain">
+                <optgroup label="Pharos">
+                  <option value="1672">Pharos Mainnet · 1672</option>
+                  <option value="688688">Pharos Testnet · 688688</option>
+                </optgroup>
+                <optgroup label="Other chains">
+                  <option value="1">Ethereum · 1</option>
+                  <option value="56">BSC · 56</option>
+                  <option value="8453">Base · 8453</option>
+                  <option value="42161">Arbitrum · 42161</option>
+                  <option value="137">Polygon · 137</option>
+                </optgroup>
+              </select>
+            </div>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Scan type</span>
+            <div class="segmented" id="scanType" role="tablist">
+              <button data-val="auto" class="seg active">Auto</button>
+              <button data-val="token" class="seg">Token</button>
+              <button data-val="wallet" class="seg">Wallet</button>
+              <button data-val="nft" class="seg">NFT</button>
+            </div>
+          </label>
+        </div>
+
+        <button id="scanBtn" class="cta">
+          <span class="cta-label">Scan address</span>
+          <span class="cta-spin" hidden></span>
+        </button>
+
+        <div class="examples">
+          <span class="ex-label">Try:</span>
+          <button class="ex-chip" data-addr="0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48" data-chain="1" data-type="token">USDC · safe</button>
+          <button class="ex-chip danger" data-addr="0x098B716B8Aaf21512996dC57EB0615e2383E2f96" data-chain="1672" data-type="wallet">Sanctioned · critical</button>
+          <button class="ex-chip" data-addr="0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045" data-chain="1" data-type="wallet">Wallet · clean</button>
+        </div>
+      </div>
+
+      <!-- ─── Result card ─── -->
+      <div class="card result-card" id="result">
+        <div class="empty-state" id="emptyState">
+          <div class="empty-ring">
+            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <p>Run a scan to see the verdict, risk breakdown, and recommended agent action.</p>
+        </div>
+
+        <div class="result-body" id="resultBody" hidden>
+          <div class="verdict-hero">
+            <div class="gauge" id="gauge">
+              <svg viewBox="0 0 120 120">
+                <circle class="gauge-track" cx="60" cy="60" r="52"></circle>
+                <circle class="gauge-fill" id="gaugeFill" cx="60" cy="60" r="52"></circle>
+              </svg>
+              <div class="gauge-center">
+                <span class="gauge-score" id="score">0</span>
+                <span class="gauge-max">/ 100</span>
+              </div>
+            </div>
+            <div class="verdict-meta">
+              <span class="verdict-eyebrow">Verdict</span>
+              <span class="verdict-word" id="verdictWord">—</span>
+              <span class="verdict-target" id="verdictTarget"></span>
+            </div>
+          </div>
+
+          <div class="action-banner" id="actionBanner">
+            <span class="action-ico" id="actionIco">›</span>
+            <div>
+              <span class="action-title">Recommended action</span>
+              <span class="action-text" id="actionText"></span>
+            </div>
+          </div>
+
+          <p class="summary" id="summary"></p>
+
+          <div class="block" id="breakdownBlock">
+            <span class="block-title">Risk breakdown</span>
+            <div class="bars" id="bars"></div>
+          </div>
+
+          <div class="block" id="flagsBlock">
+            <span class="block-title">Flags <span class="count" id="flagCount">0</span></span>
+            <ul class="flags" id="flags"></ul>
+          </div>
+
+          <div class="block memo-block">
+            <span class="block-title">On-chain audit trail</span>
+            <p class="memo-hint">Write this verdict to Pharos as a tamper-evident record (dry-run preview — no key needed).</p>
+            <button id="memoBtn" class="memo-btn">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
+              Preview on-chain memo
+            </button>
+            <div class="memo-out" id="memoOut" hidden></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="how">
+      <div class="how-item">
+        <span class="how-step">01</span>
+        <h3>Scan</h3>
+        <p>GoPlus checks honeypots, taxes, ownership, sanctions, phishing &amp; theft intel across 40+ chains incl. Pharos.</p>
+      </div>
+      <div class="how-item">
+        <span class="how-step">02</span>
+        <h3>Verdict</h3>
+        <p>One normalized 0–100 score → SAFE / CAUTION / DANGER / CRITICAL. Any agent branches on it, no parsing.</p>
+      </div>
+      <div class="how-item">
+        <span class="how-step">03</span>
+        <h3>Attest</h3>
+        <p>Write the verdict on-chain with <code>pharos-onchain-memo</code> for a provable audit trail before acting.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Security data by <a href="https://gopluslabs.io/security-api" target="_blank" rel="noopener">GoPlus Security</a> · Built for the Pharos Skill-to-Agent Hackathon</span>
+    <span class="footer-cmd">npx pharos-security-scan '{"address":"0x…","chain_id":"1672","scan_type":"auto"}'</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

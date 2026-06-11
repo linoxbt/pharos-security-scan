@@ -30,6 +30,24 @@ Both follow the **Pharos Skill Engine** format (`SKILL.md` frontmatter + `assets
 and GoPlus supports **Pharos Mainnet (`1672`)** and **Pharos Testnet (`688688`)** natively — so
 the scanner works on Pharos addresses, not just Ethereum/BSC.
 
+## Dashboard UI
+
+A premium web dashboard ships in the repo — paste an address, pick a network
+(Pharos Mainnet / Testnet and more), and get a live verdict with an animated risk
+gauge, per-category breakdown, severity-coded flags, and a one-click on-chain
+audit-memo preview.
+
+![Pharos Security Scan — result view](docs/screenshot-critical.png)
+
+```bash
+git clone https://github.com/linoxbt/pharos-security-scan.git
+cd pharos-security-scan && npm install
+npm run ui     # → http://localhost:4317
+```
+
+Scans are shareable via deep link: `/?address=0x…&chain=1672&type=wallet&run=1`.
+The UI is a local/demo convenience and is **not** part of the published npm package.
+
 ## Installation
 
 ### As a Skill (recommended) — works today
